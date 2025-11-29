@@ -6,32 +6,45 @@ import { PhoneIcon, MailIcon, MapPinIcon } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setResult(null);
 
-    // Simulate form submission - in production, connect to an API
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
 
-    // For now, open mailto with the form data
-    const subject = encodeURIComponent(`Website Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${COMPANY.contact.email}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+      const data = await response.json();
+
+      if (data.success) {
+        setResult({
+          success: true,
+          message: "Thank you for your message! We'll be in touch soon.",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setResult({
+          success: false,
+          message: data.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch {
+      setResult({
+        success: false,
+        message: "Failed to send message. Please try again or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,61 +64,67 @@ export default function Contact() {
               below:
             </p>
 
-            {submitted ? (
+            {result?.success ? (
               <div className="bg-accent/10 border border-accent rounded-lg p-6 text-center">
-                <p className="text-accent font-medium">
-                  Thank you for your message! We&apos;ll be in touch soon.
-                </p>
+                <p className="text-accent font-medium">{result.message}</p>
+                <button
+                  onClick={() => setResult(null)}
+                  className="mt-4 text-sm text-muted hover:text-foreground transition-colors"
+                >
+                  Send another message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field for spam protection */}
+                <input type="checkbox" name="botcheck" className="hidden" />
+
+                {/* Hidden fields for Web3Forms */}
+                <input type="hidden" name="subject" value="New Contact Form Submission - Constrong Website" />
+                <input type="hidden" name="from_name" value="Constrong Website" />
+
                 <div>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Name"
                     required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
                     className="w-full px-4 py-3 bg-background border border-card-border rounded-lg focus:outline-none focus:border-accent transition-colors text-foreground placeholder:text-muted"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
                     className="w-full px-4 py-3 bg-background border border-card-border rounded-lg focus:outline-none focus:border-accent transition-colors text-foreground placeholder:text-muted"
                   />
                 </div>
                 <div>
                   <input
                     type="tel"
+                    name="phone"
                     placeholder="Phone"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
                     className="w-full px-4 py-3 bg-background border border-card-border rounded-lg focus:outline-none focus:border-accent transition-colors text-foreground placeholder:text-muted"
                   />
                 </div>
                 <div>
                   <textarea
+                    name="message"
                     placeholder="Message"
                     required
                     rows={5}
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
                     className="w-full px-4 py-3 bg-background border border-card-border rounded-lg focus:outline-none focus:border-accent transition-colors text-foreground placeholder:text-muted resize-none"
                   />
                 </div>
+
+                {result && !result.success && (
+                  <div className="bg-red-500/10 border border-red-500 rounded-lg p-4 text-center">
+                    <p className="text-red-400 text-sm">{result.message}</p>
+                  </div>
+                )}
+
                 <Button type="submit" disabled={isSubmitting} className="w-full">
                   {isSubmitting ? "Sending..." : "Send"}
                 </Button>
