@@ -87,7 +87,7 @@ constrong/
 │   └── lib/
 │       └── constants.ts        # Company info, services, careers data
 ├── public/
-│   └── images/                 # Local images (when added)
+│   └── images/                 # Project images from Instagram
 ├── mockups/                    # Design reference files (gitignored)
 ├── CLAUDE.md                   # AI assistant project guidelines
 ├── next.config.ts
@@ -152,14 +152,25 @@ export const COMPANY = {
 };
 ```
 
-### Replacing Placeholder Images
+### Updating Images
 
-The site currently uses Unsplash placeholder images. To use actual company photos:
+Images are stored in `public/images/` with the following structure:
 
-1. Add images to `public/images/` directory
-2. Update image paths in `src/lib/constants.ts`
-3. Update hero background in `src/components/sections/Hero.tsx`
-4. Update about image in `src/components/sections/About.tsx`
+```
+public/images/
+├── hero-bg.jpg              # Hero section background
+├── about.jpg                # About section image
+├── services/
+│   ├── foundations.jpg      # Foundations service card
+│   ├── footings.jpg         # Footings service card
+│   └── slabs.jpg            # Slabs service card
+└── projects/
+    ├── project-1.jpg        # Gallery images
+    ├── project-2.jpg
+    └── ...
+```
+
+To update images, replace the files while keeping the same filenames, or update paths in `src/lib/constants.ts`.
 
 ### Theming
 
@@ -193,22 +204,17 @@ This Next.js app can be deployed to any platform supporting Node.js:
 - **AWS Amplify** - [Deploy Next.js](https://docs.amplify.aws/guides/hosting/nextjs/q/platform/js/)
 - **Docker** - Build with `next build` and serve with `next start`
 
-## Image Attribution
+## Images
 
-This project uses placeholder images from [Unsplash](https://unsplash.com/). While Unsplash's license allows free use without attribution, we appreciate the photographers' work:
+All images used on this website are **authentic Constrong project photos** sourced from the official [@constrong2019 Instagram account](https://www.instagram.com/constrong2019/).
 
-| Image | Unsplash Photo ID | Usage |
-|-------|-------------------|-------|
-| Construction Site 1 | [photo-1504307651254](https://unsplash.com/photos/1504307651254-35680f356dfd) | Hero background, Services, Projects |
-| Construction Site 2 | [photo-1541888946425](https://unsplash.com/photos/1541888946425-d81bb19240f5) | Services, About, Projects |
-| Concrete Work | [photo-1590069261209](https://unsplash.com/photos/1590069261209-f8e9b8642343) | Services, Projects |
-| Architecture | [photo-1503387762](https://unsplash.com/photos/1503387762-592deb58ef4e) | Projects |
-| Construction | [photo-1517581177682](https://unsplash.com/photos/1517581177682-a085bb7ffb15) | Projects |
-| Building | [photo-1568992688065](https://unsplash.com/photos/1568992688065-536aad8a12f6) | Projects |
+The images showcase real concrete formwork projects completed by Constrong in the Kitchener-Waterloo region, including:
+- Column and pier formwork
+- Foundation and footing work
+- Commercial and industrial projects
+- Residential foundations
 
-**Unsplash License:** Photos are released under the [Unsplash License](https://unsplash.com/license), which grants an irrevocable, nonexclusive, worldwide copyright license to download, copy, modify, distribute, perform, and use photos for free, including for commercial purposes, without permission or attribution (though attribution is appreciated).
-
-> **Note:** These placeholder images should be replaced with actual Constrong project photos for production use.
+Images were downloaded using [instaloader](https://instaloader.github.io/) and are used with permission from Constrong.
 
 ## Browser Support
 
@@ -232,3 +238,4 @@ This project is proprietary software for Constrong. All rights reserved.
 
 Website: [constronginc.com](https://constronginc.com) (coming soon)
 Facebook: [@Constrong](https://www.facebook.com/profile.php?id=100057175941535)
+Instagram: [@constrong2019](https://www.instagram.com/constrong2019/)

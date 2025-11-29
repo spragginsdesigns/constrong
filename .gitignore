@@ -39,6 +39,9 @@ yarn-error.log*
 # mockup reference files
 /mockups
 
+# instagram download cache
+/instagram-download
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

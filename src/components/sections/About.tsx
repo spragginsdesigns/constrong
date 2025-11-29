@@ -9,7 +9,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[4/3] rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop"
+                src="/images/about.jpg"
                 alt="Constrong construction work"
                 className="w-full h-full object-cover"
               />
