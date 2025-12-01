@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import { PROJECTS } from "@/lib/constants";
+import Button from "@/components/ui/Button";
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6);
 
   return (
     <section id="projects" className="py-20 md:py-28 bg-card-bg">
@@ -15,7 +19,7 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {PROJECTS.map((project) => (
+          {displayedProjects.map((project) => (
             <button
               key={project.id}
               onClick={() => setSelectedImage(project.image)}
@@ -34,6 +38,17 @@ export default function Projects() {
             </button>
           ))}
         </div>
+
+        {PROJECTS.length > 6 && (
+          <div className="text-center mt-10">
+            <Button
+              variant="outline"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? "Show Less" : "View All"}
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
