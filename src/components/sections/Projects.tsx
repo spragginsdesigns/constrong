@@ -53,10 +53,7 @@ export default function Projects() {
           {PROJECT_CATEGORIES.map((category) => (
             <button
               key={category.id}
-              onClick={() => {
-                setActiveCategory(category.id);
-                setShowAll(false);
-              }}
+              onClick={() => setActiveCategory(category.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
                   ? "bg-accent text-background"
@@ -95,13 +92,13 @@ export default function Projects() {
           ))}
         </div>
 
-        {filteredProjects.length > 6 && (
+        {!showAll && filteredProjects.length > 6 && (
           <div className="text-center mt-10">
             <Button
               variant="outline"
-              onClick={() => setShowAll(!showAll)}
+              onClick={() => setShowAll(true)}
             >
-              {showAll ? "Show Less" : `View All (${filteredProjects.length})`}
+              View All ({filteredProjects.length})
             </Button>
           </div>
         )}
