@@ -10,13 +10,13 @@ export default function Careers() {
         </div>
 
         <div className="bg-card-bg border border-card-border rounded-lg p-8 hover:border-accent/50 transition-colors duration-300">
-          <h3 className="text-2xl font-semibold text-accent mb-4 text-center">
+          <h3 className="text-xl font-semibold mb-6 text-center">
             Labourers, Form Setters, and Carpenters
           </h3>
-          <p className="text-muted text-center text-lg mb-2">
+          <p className="text-foreground text-center mb-6">
             We're looking for experienced members to join our team.
           </p>
-          <p className="text-muted text-center text-lg">
+          <p className="text-foreground text-center">
             Apply today by sending your resume to{" "}
             <a
               href={`mailto:${COMPANY.contact.email}?subject=Job Application`}
