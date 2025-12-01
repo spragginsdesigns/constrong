@@ -1,21 +1,15 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { PROJECTS, PROJECT_CATEGORIES, type ProjectCategory } from "@/lib/constants";
+import { useState } from "react";
+import { PROJECTS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [showAll, setShowAll] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
 
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "all") return PROJECTS;
-    return PROJECTS.filter((project) => project.category === activeCategory);
-  }, [activeCategory]);
-
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
+  const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6);
 
   const handleImageClick = (image: string, index: number) => {
     setSelectedImage(image);
@@ -48,28 +42,6 @@ export default function Projects() {
           <div className="section-divider" />
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {PROJECT_CATEGORIES.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category.id
-                  ? "bg-accent text-background"
-                  : "bg-background/50 text-muted hover:bg-background hover:text-foreground border border-card-border"
-              }`}
-            >
-              {category.label}
-              <span className="ml-2 text-xs opacity-70">
-                ({category.id === "all"
-                  ? PROJECTS.length
-                  : PROJECTS.filter(p => p.category === category.id).length})
-              </span>
-            </button>
-          ))}
-        </div>
-
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {displayedProjects.map((project, index) => (
             <button
@@ -92,13 +64,13 @@ export default function Projects() {
           ))}
         </div>
 
-        {!showAll && filteredProjects.length > 6 && (
+        {PROJECTS.length > 6 && (
           <div className="text-center mt-10">
             <Button
               variant="outline"
-              onClick={() => setShowAll(true)}
+              onClick={() => setShowAll(!showAll)}
             >
-              View All ({filteredProjects.length})
+              {showAll ? "Collapse" : `View All (${PROJECTS.length})`}
             </Button>
           </div>
         )}
