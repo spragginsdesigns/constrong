@@ -113,15 +113,17 @@ export default function Projects() {
           </button>
 
           {/* Image - High quality for lightbox */}
-          <div className="relative w-full h-[85vh]">
+          <div
+            className="relative w-[90vw] h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={selectedImage}
               alt="Project detail"
               fill
-              sizes="100vw"
+              sizes="90vw"
               className="object-contain rounded-lg"
               quality={95}
-              onClick={(e) => e.stopPropagation()}
               priority
             />
           </div>

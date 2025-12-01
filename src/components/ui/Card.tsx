@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface CardProps {
   children: ReactNode;
@@ -24,10 +25,13 @@ interface CardImageProps {
 export function CardImage({ src, alt, className = "" }: CardImageProps) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      <img
+      <Image
         src={src}
         alt={alt}
-        className="w-full h-full object-cover"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover"
+        quality={90}
       />
     </div>
   );

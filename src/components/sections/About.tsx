@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { COMPANY } from "@/lib/constants";
 
 export default function About() {
@@ -7,11 +8,14 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="relative">
-            <div className="aspect-[4/3] rounded-lg overflow-hidden">
-              <img
+            <div className="aspect-[4/3] rounded-lg overflow-hidden relative">
+              <Image
                 src="/images/about.jpg"
                 alt="Constrong construction work"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                quality={90}
               />
             </div>
             {/* Decorative element */}
