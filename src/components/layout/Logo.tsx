@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface LogoProps {
   size?: number;
   className?: string;
@@ -7,13 +5,12 @@ interface LogoProps {
 
 export default function Logo({ size = 48, className = "" }: LogoProps) {
   return (
-    <Image
+    <img
       src="/logo.png"
       alt="Constrong Logo"
       width={size}
       height={size}
       className={className}
-      priority
     />
   );
 }
