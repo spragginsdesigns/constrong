@@ -20,7 +20,7 @@ export default function Services() {
               />
               <CardContent>
                 <CardTitle>{service.title}</CardTitle>
-                <p className="text-muted leading-relaxed">{service.description}</p>
+                <p className="text-foreground/90 leading-relaxed">{service.description}</p>
               </CardContent>
             </Card>
           ))}
