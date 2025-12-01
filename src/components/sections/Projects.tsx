@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { PROJECTS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 
@@ -49,11 +50,13 @@ export default function Projects() {
               onClick={() => handleImageClick(project.image, index)}
               className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
             >
-              <img
+              <Image
                 src={project.image}
                 alt={project.alt}
-                loading="lazy"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 33vw"
+                className="object-cover"
+                quality={90}
               />
               <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-colors duration-300 flex items-center justify-center">
                 <span className="text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
@@ -109,13 +112,19 @@ export default function Projects() {
             </svg>
           </button>
 
-          {/* Image */}
-          <img
-            src={selectedImage}
-            alt="Project detail"
-            className="max-w-full max-h-[85vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
+          {/* Image - High quality for lightbox */}
+          <div className="relative w-full h-[85vh]">
+            <Image
+              src={selectedImage}
+              alt="Project detail"
+              fill
+              sizes="100vw"
+              className="object-contain rounded-lg"
+              quality={95}
+              onClick={(e) => e.stopPropagation()}
+              priority
+            />
+          </div>
 
           {/* Next button */}
           <button
