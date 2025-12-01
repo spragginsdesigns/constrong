@@ -76,4 +76,5 @@ export const PROJECTS = [
   { id: 4, image: "/images/projects/project-4.jpg", alt: "Commercial wall forming" },
   { id: 5, image: "/images/projects/project-5.jpg", alt: "Industrial formwork" },
   { id: 6, image: "/images/projects/project-6.jpg", alt: "Foundation columns" },
+  { id: 7, image: "/images/projects/project-7.jpg", alt: "Construction site overview" },
 ];
