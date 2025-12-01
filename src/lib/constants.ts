@@ -27,7 +27,7 @@ export const SERVICES = [
     title: "Foundations",
     description:
       "We have the experience to do a wide variety of foundations with a focus on quality, precision and in a timely manner.",
-    image: "/images/projects/foundations/foundations-01.webp",
+    image: "/images/projects/walls/walls-15.webp",
   },
   {
     id: "footings",
