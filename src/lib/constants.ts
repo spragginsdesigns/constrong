@@ -27,21 +27,21 @@ export const SERVICES = [
     title: "Foundations",
     description:
       "We have the experience to do a wide variety of foundations with a focus on quality, precision and in a timely manner.",
-    image: "/images/services/foundations.jpg",
+    image: "/images/projects/foundations/foundations-01.webp",
   },
   {
     id: "footings",
     title: "Footings",
     description:
-      "Footings are the lowest part of a building that sits directly on the ground. From simply strip footings to pad footings, we are capable of completing any task to get the project started.",
-    image: "/images/services/footings.jpg",
+      "Footings are the lowest part of a building that sits directly on the ground. From simple strip footings to pad footings, we are capable of completing any task to get the project started.",
+    image: "/images/projects/footings/footings-03.webp",
   },
   {
     id: "slabs",
     title: "Slabs",
     description:
       "From sidewalks to polished floors we pride ourselves on the quality and finish on our flatwork.",
-    image: "/images/services/slabs.jpg",
+    image: "/images/projects/slabs/slabs-11.webp",
   },
 ];
 
@@ -69,12 +69,79 @@ export const NAV_LINKS = [
   { href: "#contact", label: "Contact" },
 ];
 
-export const PROJECTS = [
-  { id: 1, image: "/images/projects/project-1.jpg", alt: "Concrete column installation" },
-  { id: 2, image: "/images/projects/project-2.jpg", alt: "Residential foundation formwork" },
-  { id: 3, image: "/images/projects/project-3.jpg", alt: "Wall formwork with rebar" },
-  { id: 4, image: "/images/projects/project-4.jpg", alt: "Commercial wall forming" },
-  { id: 5, image: "/images/projects/project-5.jpg", alt: "Industrial formwork" },
-  { id: 6, image: "/images/projects/project-6.jpg", alt: "Foundation columns" },
-  { id: 7, image: "/images/projects/project-7.jpg", alt: "Construction site overview" },
+export type ProjectCategory = "all" | "foundations" | "footings" | "slabs" | "walls";
+
+export const PROJECT_CATEGORIES: { id: ProjectCategory; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "foundations", label: "Foundations" },
+  { id: "footings", label: "Footings" },
+  { id: "slabs", label: "Slabs" },
+  { id: "walls", label: "Walls" },
+];
+
+export const PROJECTS: { id: number; image: string; alt: string; category: ProjectCategory }[] = [
+  // Featured/Legacy projects (keep existing)
+  { id: 1, image: "/images/projects/project-1.jpg", alt: "Concrete column installation", category: "foundations" },
+  { id: 2, image: "/images/projects/project-2.jpg", alt: "Residential foundation formwork", category: "foundations" },
+  { id: 3, image: "/images/projects/project-3.jpg", alt: "Wall formwork with rebar", category: "walls" },
+  { id: 4, image: "/images/projects/project-4.jpg", alt: "Commercial wall forming", category: "walls" },
+  { id: 5, image: "/images/projects/project-5.jpg", alt: "Industrial formwork", category: "foundations" },
+  { id: 6, image: "/images/projects/project-6.jpg", alt: "Foundation columns", category: "foundations" },
+  { id: 7, image: "/images/projects/project-7.jpg", alt: "Construction site overview", category: "foundations" },
+
+  // Foundations
+  { id: 8, image: "/images/projects/foundations/foundations-01.webp", alt: "Commercial foundation with columns", category: "foundations" },
+  { id: 9, image: "/images/projects/foundations/foundations-02.webp", alt: "Foundation formwork at sunset", category: "foundations" },
+  { id: 10, image: "/images/projects/foundations/foundations-03.webp", alt: "Multi-column foundation pour", category: "foundations" },
+  { id: 11, image: "/images/projects/foundations/foundations-04.webp", alt: "Foundation with column reinforcement", category: "foundations" },
+  { id: 12, image: "/images/projects/foundations/foundations-05.webp", alt: "Foundation pour with excavator", category: "foundations" },
+  { id: 13, image: "/images/projects/foundations/foundations-06.webp", alt: "Commercial foundation with pump truck", category: "foundations" },
+  { id: 14, image: "/images/projects/foundations/foundations-07.webp", alt: "Foundation pour on construction site", category: "foundations" },
+  { id: 15, image: "/images/projects/foundations/foundations-08.webp", alt: "Foundation formwork preparation", category: "foundations" },
+  { id: 16, image: "/images/projects/foundations/foundations-09.webp", alt: "Foundation with heavy reinforcement", category: "foundations" },
+  { id: 17, image: "/images/projects/foundations/foundations-10.webp", alt: "Winter foundation work", category: "foundations" },
+  { id: 18, image: "/images/projects/foundations/foundations-11.webp", alt: "Foundation walls with rebar", category: "foundations" },
+  { id: 19, image: "/images/projects/foundations/foundations-12.webp", alt: "Foundation wall formwork setup", category: "foundations" },
+
+  // Footings
+  { id: 20, image: "/images/projects/footings/footings-01.webp", alt: "Residential footing formwork", category: "footings" },
+  { id: 21, image: "/images/projects/footings/footings-02.webp", alt: "Basement footing with plumbing", category: "footings" },
+  { id: 22, image: "/images/projects/footings/footings-03.webp", alt: "Multiple pad footings preparation", category: "footings" },
+  { id: 23, image: "/images/projects/footings/footings-04.webp", alt: "Foundation pour with crew", category: "footings" },
+  { id: 24, image: "/images/projects/footings/footings-05.webp", alt: "Footing with dense rebar grid", category: "footings" },
+  { id: 25, image: "/images/projects/footings/footings-06.webp", alt: "Precast concrete forms in shop", category: "footings" },
+  { id: 26, image: "/images/projects/footings/footings-07.webp", alt: "Retaining wall footing", category: "footings" },
+  { id: 27, image: "/images/projects/footings/footings-08.webp", alt: "Trench footing excavation", category: "footings" },
+
+  // Slabs
+  { id: 28, image: "/images/projects/slabs/slabs-01.webp", alt: "Large industrial slab rebar", category: "slabs" },
+  { id: 29, image: "/images/projects/slabs/slabs-02.webp", alt: "Commercial slab with conveyor pour", category: "slabs" },
+  { id: 30, image: "/images/projects/slabs/slabs-03.webp", alt: "Industrial slab preparation", category: "slabs" },
+  { id: 31, image: "/images/projects/slabs/slabs-04.webp", alt: "Fresh concrete slab pour", category: "slabs" },
+  { id: 32, image: "/images/projects/slabs/slabs-05.webp", alt: "Construction site with equipment", category: "slabs" },
+  { id: 33, image: "/images/projects/slabs/slabs-06.webp", alt: "Winter slab pour", category: "slabs" },
+  { id: 34, image: "/images/projects/slabs/slabs-07.webp", alt: "Fresh poured slab with forms", category: "slabs" },
+  { id: 35, image: "/images/projects/slabs/slabs-08.webp", alt: "Slab rebar installation", category: "slabs" },
+  { id: 36, image: "/images/projects/slabs/slabs-09.webp", alt: "Slab with column sleeves", category: "slabs" },
+  { id: 37, image: "/images/projects/slabs/slabs-10.webp", alt: "Large slab pour with crew", category: "slabs" },
+  { id: 38, image: "/images/projects/slabs/slabs-11.webp", alt: "Slab finishing with pump truck", category: "slabs" },
+  { id: 39, image: "/images/projects/slabs/slabs-12.webp", alt: "Worker finishing concrete slab", category: "slabs" },
+  { id: 40, image: "/images/projects/slabs/slabs-13.webp", alt: "Hydrant pad pour", category: "slabs" },
+
+  // Walls
+  { id: 41, image: "/images/projects/walls/walls-01.webp", alt: "Large wall pour with pump truck", category: "walls" },
+  { id: 42, image: "/images/projects/walls/walls-02.webp", alt: "Agricultural wall construction", category: "walls" },
+  { id: 43, image: "/images/projects/walls/walls-03.webp", alt: "Wall pour with crew working", category: "walls" },
+  { id: 44, image: "/images/projects/walls/walls-04.webp", alt: "Completed wall at sunset", category: "walls" },
+  { id: 45, image: "/images/projects/walls/walls-05.webp", alt: "Tall column formwork with crane", category: "walls" },
+  { id: 46, image: "/images/projects/walls/walls-06.webp", alt: "Winter footing pour", category: "walls" },
+  { id: 47, image: "/images/projects/walls/walls-07.webp", alt: "Pump truck pouring foundation", category: "walls" },
+  { id: 48, image: "/images/projects/walls/walls-08.webp", alt: "PERI wall formwork system", category: "walls" },
+  { id: 49, image: "/images/projects/walls/walls-09.webp", alt: "Retaining wall forms with rebar", category: "walls" },
+  { id: 50, image: "/images/projects/walls/walls-10.webp", alt: "Retaining wall formwork", category: "walls" },
+  { id: 51, image: "/images/projects/walls/walls-11.webp", alt: "Wall reinforcement detail", category: "walls" },
+  { id: 52, image: "/images/projects/walls/walls-12.webp", alt: "Wall formwork at commercial site", category: "walls" },
+  { id: 53, image: "/images/projects/walls/walls-13.webp", alt: "Poured wall section", category: "walls" },
+  { id: 54, image: "/images/projects/walls/walls-14.webp", alt: "Pump truck wall pour", category: "walls" },
+  { id: 55, image: "/images/projects/walls/walls-15.webp", alt: "Retaining wall with telehandler", category: "walls" },
 ];

@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { COMPANY } from "@/lib/constants";
-import { PhoneIcon, MailIcon, MapPinIcon } from "@/components/ui/Icons";
+import { PhoneIcon, MailIcon } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 
 export default function Contact() {
@@ -134,16 +134,6 @@ export default function Contact() {
 
           {/* Contact Info */}
           <div>
-            <div className="mb-12">
-              <div className="flex items-start gap-4 text-muted">
-                <MapPinIcon className="text-accent mt-1 flex-shrink-0" size={20} />
-                <div>
-                  <p>{COMPANY.name}</p>
-                  <p>{COMPANY.location.full}</p>
-                </div>
-              </div>
-            </div>
-
             <div>
               <h3 className="text-xl font-semibold mb-6">Contacts</h3>
               <div className="space-y-4">
