@@ -10,7 +10,7 @@ export default function Careers() {
         </div>
 
         <div className="bg-card-bg border border-card-border rounded-lg p-8 hover:border-accent/50 transition-colors duration-300">
-          <h3 className="text-xl font-semibold mb-6 text-center">
+          <h3 className="text-xl font-semibold mb-6 text-center text-accent">
             Labourers, Form Setters, and Carpenters
           </h3>
           <p className="text-foreground text-center mb-6">
