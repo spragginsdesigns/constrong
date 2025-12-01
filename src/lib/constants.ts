@@ -2,7 +2,7 @@ export const COMPANY = {
   name: "Constrong",
   tagline: "Proudly serving the construction industry in KW and surrounding area",
   description:
-    "At Constrong, we have the expertise and experience to deliver a wide variety of concrete formwork projects accurately and efficiently. We specialize in foundations, parking garages, high-rise bases, restoration, retaining walls, and slabs.",
+    "At Constrong, we have the expertise and experience to deliver a wide variety of concrete formwork projects. We specialize in footings, foundations, retaining walls and slabs.",
   founded: "2019",
   location: {
     city: "Kitchener",
@@ -26,21 +26,21 @@ export const SERVICES = [
     id: "foundations",
     title: "Foundations",
     description:
-      "We have the expertise and experience to do a wide variety of formwork to complete projects accurately in a time efficient manner.",
+      "We have the experience to do a wide variety of foundations with a focus on quality, precision and in a timely manner.",
     image: "/images/services/foundations.jpg",
   },
   {
     id: "footings",
     title: "Footings",
     description:
-      "From simple strip and pad footings to tall walls, we have proven ourselves against any challenges that we have faced.",
+      "Footings are the lowest part of a building that sits directly on the ground. From simply strip footings to pad footings, we are capable of completing any task to get the project started.",
     image: "/images/services/footings.jpg",
   },
   {
     id: "slabs",
     title: "Slabs",
     description:
-      "Concrete, suspended slabs, or slabs on grade are the easiest and finished with quality as our main priority.",
+      "From sidewalks to polished floors we pride ourselves on the quality and finish on our flatwork.",
     image: "/images/services/slabs.jpg",
   },
 ];
@@ -62,9 +62,10 @@ export const CAREERS = [
 
 export const NAV_LINKS = [
   { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
+  { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
+  { href: "#careers", label: "Careers" },
   { href: "#contact", label: "Contact" },
 ];
 

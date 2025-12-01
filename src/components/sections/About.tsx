@@ -24,7 +24,7 @@ export default function About() {
             <div className="w-16 h-1 bg-accent mb-8" />
             <p className="text-foreground/90 text-lg leading-relaxed mb-6">
               Since {COMPANY.founded}, {COMPANY.name} has been proudly serving the
-              construction industry in Southern Ontario, based in the{" "}
+              construction industry in southern Ontario, based in the{" "}
               {COMPANY.location.city}-Waterloo area.
             </p>
             <p className="text-muted leading-relaxed mb-6">{COMPANY.description}</p>

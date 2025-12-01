@@ -1,4 +1,4 @@
-import { CAREERS, COMPANY } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
 
 export default function Careers() {
   return (
@@ -9,18 +9,13 @@ export default function Careers() {
           <div className="section-divider" />
         </div>
 
-        <div className="space-y-6">
-          {CAREERS.map((career) => (
-            <div
-              key={career.id}
-              className="bg-card-bg border border-card-border rounded-lg p-6 hover:border-accent/50 transition-colors duration-300"
-            >
-              <h3 className="text-xl font-semibold text-accent mb-2">
-                {career.title}
-              </h3>
-              <p className="text-muted">{career.description}</p>
-            </div>
-          ))}
+        <div className="bg-card-bg border border-card-border rounded-lg p-8 hover:border-accent/50 transition-colors duration-300">
+          <h3 className="text-2xl font-semibold text-accent mb-4 text-center">
+            Labourers, Form Setters, and Carpenters
+          </h3>
+          <p className="text-muted text-center text-lg">
+            We are looking for experienced members to join our team.
+          </p>
         </div>
 
         <div className="text-center mt-12">

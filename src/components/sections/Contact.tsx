@@ -135,7 +135,6 @@ export default function Contact() {
           {/* Contact Info */}
           <div>
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6">Address</h3>
               <div className="flex items-start gap-4 text-muted">
                 <MapPinIcon className="text-accent mt-1 flex-shrink-0" size={20} />
                 <div>
