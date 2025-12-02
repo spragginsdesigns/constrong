@@ -13,7 +13,7 @@ export const COMPANY = {
   contact: {
     phone: "+1 519-222-0700",
     phoneRaw: "15192220700",
-    email: "ryan.armstrong@constronginc.com",
+    email: "info@constronginc.com",
   },
   social: {
     facebook: "https://www.facebook.com/profile.php?id=100057175941535",
