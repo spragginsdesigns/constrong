@@ -112,20 +112,25 @@ export default function Projects() {
             </svg>
           </button>
 
-          {/* Image - High quality for lightbox */}
+          {/* All images preloaded - only selected one visible */}
           <div
             className="relative w-[90vw] h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={selectedImage}
-              alt="Project detail"
-              fill
-              sizes="90vw"
-              className="object-contain rounded-lg"
-              quality={95}
-              priority
-            />
+            {displayedProjects.map((project, index) => (
+              <Image
+                key={project.id}
+                src={project.image}
+                alt={project.alt}
+                fill
+                sizes="90vw"
+                className={`object-contain rounded-lg transition-opacity duration-200 ${
+                  index === selectedIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+                quality={95}
+                priority
+              />
+            ))}
           </div>
 
           {/* Next button */}
