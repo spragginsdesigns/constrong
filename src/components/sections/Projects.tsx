@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { PROJECTS } from "@/lib/constants";
 import Button from "@/components/ui/Button";
@@ -9,6 +9,9 @@ export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [showAll, setShowAll] = useState(false);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, 6);
 
@@ -17,22 +20,66 @@ export default function Projects() {
     setSelectedIndex(index);
   };
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     const newIndex = selectedIndex === 0 ? displayedProjects.length - 1 : selectedIndex - 1;
     setSelectedIndex(newIndex);
     setSelectedImage(displayedProjects[newIndex].image);
-  };
+  }, [selectedIndex, displayedProjects]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const newIndex = selectedIndex === displayedProjects.length - 1 ? 0 : selectedIndex + 1;
     setSelectedIndex(newIndex);
     setSelectedImage(displayedProjects[newIndex].image);
+  }, [selectedIndex, displayedProjects]);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedImage(null);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "Escape") closeLightbox();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, handlePrev, handleNext, closeLightbox]);
+
+  // Auto-focus lightbox when opened
+  useEffect(() => {
+    if (selectedImage && lightboxRef.current) {
+      lightboxRef.current.focus();
+    }
+  }, [selectedImage]);
+
+  // Touch swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") handlePrev();
-    if (e.key === "ArrowRight") handleNext();
-    if (e.key === "Escape") setSelectedImage(null);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 50;
+    const diff = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        handleNext(); // Swipe left = next
+      } else {
+        handlePrev(); // Swipe right = prev
+      }
+    }
+    // Reset
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   return (
@@ -82,18 +129,22 @@ export default function Projects() {
       {/* Lightbox with Navigation */}
       {selectedImage && (
         <div
+          ref={lightboxRef}
           className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-          onKeyDown={handleKeyDown}
+          onClick={closeLightbox}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           tabIndex={0}
           role="dialog"
           aria-modal="true"
+          aria-label="Image lightbox - use arrow keys or swipe to navigate"
         >
           {/* Close button */}
           <button
             className="absolute top-4 right-4 text-foreground hover:text-accent transition-colors text-4xl z-10"
-            onClick={() => setSelectedImage(null)}
-            aria-label="Close"
+            onClick={closeLightbox}
+            aria-label="Close lightbox (Escape)"
           >
             &times;
           </button>
