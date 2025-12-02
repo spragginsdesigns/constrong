@@ -33,7 +33,7 @@ export const SERVICES = [
     id: "footings",
     title: "Footings",
     description:
-      "Footings are the lowest part of a building that sits directly on the ground. From simple strip footings to pad footings, we are capable of completing any task to get the project started.",
+      "From simple strip footings to pad footings, we are capable of completing any task to get the project started.",
     image: "/images/projects/footings/footings-03.webp",
   },
   {
