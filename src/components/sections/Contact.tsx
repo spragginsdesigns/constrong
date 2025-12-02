@@ -133,13 +133,6 @@ export default function Contact() {
           {/* Contact Info - Below Form with White Font */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-foreground">
             <a
-              href={`tel:${COMPANY.contact.phoneRaw}`}
-              className="flex items-center gap-2 hover:text-accent transition-colors"
-            >
-              <PhoneIcon className="text-accent flex-shrink-0" size={18} />
-              <span>{COMPANY.contact.phone}</span>
-            </a>
-            <a
               href={`mailto:${COMPANY.contact.email}`}
               className="flex items-center gap-2 hover:text-accent transition-colors"
             >
