@@ -64,24 +64,6 @@ export default function Hero() {
           <p className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
             {COMPANY.tagline}
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Get a Quote
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Our Services
-            </Button>
-          </div>
         </div>
       </div>
 
