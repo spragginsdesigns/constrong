@@ -49,7 +49,7 @@ export default function Hero() {
         <div className="space-y-8 animate-fade-in-up">
           {/* Logo */}
           <Logo size={100} className="mx-auto opacity-90" />
-          
+
           {/* Heading Group */}
           <div className="space-y-3">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide">
@@ -64,6 +64,17 @@ export default function Hero() {
           <p className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
             {COMPANY.tagline}
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
       </div>
 
