@@ -13,6 +13,7 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.constrong.ca"),
   title: "Constrong | Concrete Contractor in Kitchener-Waterloo",
   description:
     "Constrong is a professional concrete contractor proudly serving the construction industry in Kitchener-Waterloo and surrounding areas. Specializing in foundations, footings, slabs, and more.",
@@ -26,14 +27,47 @@ export const metadata: Metadata = {
     "slabs",
     "construction",
     "formwork",
+    "concrete walls",
+    "residential concrete",
+    "commercial concrete",
+    "KW concrete",
   ],
   authors: [{ name: "Constrong" }],
+  creator: "Constrong Inc.",
+  publisher: "Constrong Inc.",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
+  alternates: {
+    canonical: "https://www.constrong.ca",
+  },
   openGraph: {
     title: "Constrong | Concrete Contractor in Kitchener-Waterloo",
     description:
-      "Professional concrete contractor serving the KW construction industry",
-    type: "website",
+      "Professional concrete contractor proudly serving the construction industry in Kitchener-Waterloo and surrounding areas. Specializing in foundations, footings, slabs, and walls.",
+    url: "https://www.constrong.ca",
+    siteName: "Constrong",
     locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Constrong | Concrete Contractor in Kitchener-Waterloo",
+    description:
+      "Professional concrete contractor proudly serving the construction industry in Kitchener-Waterloo and surrounding areas.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
