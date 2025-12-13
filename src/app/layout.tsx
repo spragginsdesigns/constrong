@@ -71,6 +71,42 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.constrong.ca/#business",
+  name: "Constrong",
+  description:
+    "Professional concrete contractor serving the construction industry in Kitchener-Waterloo and surrounding areas. Specializing in foundations, footings, slabs, and walls.",
+  url: "https://www.constrong.ca",
+  telephone: "+1-519-222-0700",
+  email: "ryan.armstrong@constronginc.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kitchener",
+    addressRegion: "ON",
+    addressCountry: "CA",
+  },
+  areaServed: [
+    { "@type": "City", name: "Kitchener", addressRegion: "ON" },
+    { "@type": "City", name: "Waterloo", addressRegion: "ON" },
+    { "@type": "City", name: "Cambridge", addressRegion: "ON" },
+    { "@type": "City", name: "Guelph", addressRegion: "ON" },
+  ],
+  serviceType: [
+    "Concrete Foundations",
+    "Concrete Footings",
+    "Concrete Slabs",
+    "Concrete Walls",
+    "Formwork",
+    "Residential Concrete",
+    "Commercial Concrete",
+  ],
+  priceRange: "$$",
+  image: "https://www.constrong.ca/opengraph-image",
+  sameAs: [],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +121,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="Constrong" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${inter.variable} ${oswald.variable} antialiased`}>
         {children}
